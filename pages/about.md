@@ -7,7 +7,7 @@ description: Some description.
 permalink: /about/
 ---
 
-<img class="img-rounded" src="/assets/img/uploads/profile2.jpg" alt="sean_profile" width="400" height="300">
+<img class="img-rounded" src="/assets/img/uploads/profile2.jpg" alt="sean_profile" width="400" height="600">
 
 # About
 
