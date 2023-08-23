@@ -1,16 +1,19 @@
 ---
 layout: page
 menu: false
-date: '2023-08-24 01:10:59'
+date: '2020-02-27 01:53:59'
 title: About
 description: Some description.
 permalink: /about/
 ---
 
-<img class="img-rounded" src="/assets/img/uploads/profile_sean.jpg" alt="sean_profile" width="300">
+<img class="img-rounded" src="/assets/img/uploads/profile.png" alt="Thiago Rossener" width="200">
 
-# About Me
+# About
 
-I am currently a graduate student in MAIN Lab @ Sungkyunkwan University, advised by Prof. Jaekwang Kim and was a SKT AI Fellowship member with SKT Supernova team in 2022. I received my B.S degree in Molecular Biotechnology @ Ghent University Global Campus and wrote my bachelor thesis with the supervision of Utku Ozbulak and Professor Wesley De Neve.
-
-My major research interest lies but is not limited to computer vision, especially generative model, self-supervised learning and LLMs.
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
