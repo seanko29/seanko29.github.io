@@ -1,7 +1,6 @@
 github_users:
-  - torvalds
-  - alshedivat
-
+  - seanko29
+  
 github_repos:
   - alshedivat/al-folio
   - twbs/bootstrap
