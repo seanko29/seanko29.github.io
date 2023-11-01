@@ -73,8 +73,8 @@ og_image: # The site-wide (default for all links) Open Graph preview image
 # Social integration
 # -----------------------------------------------------------------------------
 
-github_username: # your GitHub user name
-gitlab_username: # your GitLab user name
+github_username: seanko29 # your GitHub user name
+gitlab_username: Donggeun "Sean" Ko # your GitLab user name
 twitter_username: # your Twitter handle
 mastodon_username: # your mastodon instance+username in the format instance.tld/@username
 linkedin_username: # your LinkedIn user name
@@ -109,7 +109,7 @@ discord_id: # your discord id (18-digit unique numerical identifier)
 zotero_username: # your zotero username
 
 contact_note: >
-  You can even add a little note about which of these is the best way to reach you.
+ Please contact me via my academic email (donggeunko@gmail.com or seanko@g.skku.edu) or LinkedIn for collaboration, questions or other inquiries.
 
 # -----------------------------------------------------------------------------
 # Analytics and search engine verification
