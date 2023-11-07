@@ -7,6 +7,7 @@
   author={Ko, Donggeun and Lee, Dongjun and Park, Namjun and Noh, Kyoungrae and Park, Hyeonjin and Kim, Jaekwang},
   booktitle={Proceedings of the 32nd ACM International Conference on Information and Knowledge Management},
   pages={4028--4032},
+  preview={AmpliBias.png}
   year={2023}
 }
 
@@ -16,6 +17,7 @@
   author={Kim, Jeongho and Lee, Yun-Gyoo and Ko, Donggeun and Kim, Taejune and Ham, Soo-Youn and Woo, Simon S},
   booktitle={Proceedings of the 38th ACM/SIGAPP Symposium on Applied Computing},
   pages={575--584},
+  preview={HCLREC.png},
   year={2023}
 }
 
@@ -24,9 +26,18 @@
   title={A-ColViT: Real-time Interactive Colorization by Adaptive Vision Transformer},
   author={Lee, Gwanghan and Shin, Saebyeol and Ko, Donggeun and Jung, Jiyeon and Woo, Simon S},
   booktitle={Workshop at AAAI Conference on Artificial Intelligence 2023, 2nd International Workshop on Practical Deep Learning in the Wild},
+  preview={acol_vit.png},
   year={2023}
 }
 
+@article{lee2023hierarchical,
+  title={Hierarchical Contrastive Learning with Multiple Augmentation for Sequential Recommendation},
+  author={Lee, Dongjun and Ko, Donggeun and Kim, Jaekwang},
+  journal={arXiv preprint arXiv:2308.03400},
+  year={2023},
+  preview={HCLREC.png},
+  abstract={Sequential recommendation addresses the issue of preference drift by predicting the next item based on the user's previous behaviors. Recently, a promising approach using contrastive learning has emerged, demonstrating its effectiveness in recommending items under sparse user-item interactions. Significantly, the effectiveness of combinations of various augmentation methods has been demonstrated in different domains, particularly in computer vision. However, when it comes to augmentation within a contrastive learning framework in sequential recommendation, previous research has only focused on limited conditions and simple structures. Thus, it is still possible to extend existing approaches to boost the effects of augmentation methods by using progressed structures with the combinations of multiple augmentation methods. In this work, we propose a novel framework called Hierarchical Contrastive Learning with Multiple Augmentation for Sequential Recommendation(HCLRec) to overcome the aforementioned limitation. Our framework leverages existing augmentation methods hierarchically to improve performance. By combining augmentation methods continuously, we generate low-level and high-level view pairs. We employ a Transformers-based model to encode the input sequence effectively. Furthermore, we introduce additional blocks consisting of Transformers and position-wise feed-forward network(PFFN) layers to learn the invariance of the original sequences from hierarchically augmented views. We pass the input sequence to subsequent layers based on the number of increment levels applied to the views to handle various augmentation levels. Within each layer, we compute contrastive loss between pairs of views at the same level. Extensive experiments demonstrate that our proposed method outperforms state-of-the-art approaches and that HCLRec is robust even when faced with the problem of sparse interaction.}
+}
 
 @inproceedings{an20222,
   abbr={ACCV'22},
@@ -44,3 +55,4 @@
   journal={arXiv preprint arXiv:2202.11359},
   year={2022}
 }
+
