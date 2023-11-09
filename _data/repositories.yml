@@ -2,10 +2,15 @@ github_users:
   - seanko29
   
 github_repos:
-  - alshedivat/al-folio
-  - twbs/bootstrap
-  - jekyll/jekyll
-  - jquery/jquery
-  - FortAwesome/Font-Awesome
-  - jpswalsh/academicons
-  - mathjax/MathJax
+  - seanko29/AmpliBias    
+  - Pseudo-Lab/text-to-image-generation-feat-diffusion
+  - seanko29/A2-Adaptive-Augmentation-for-Effectively-Mitigating-Dataset-Bias
+  - seanko29/Differential_Privacy_DeepFakes
+  - lee-gwang/Image_Colorization_For_Historical_Image
+  - lee-gwang/A-ColViT
+  # - twbs/bootstrap
+  # - jekyll/jekyll
+  # - jquery/jquery
+  # - FortAwesome/Font-Awesome
+  # - jpswalsh/academicons
+  # - mathjax/MathJax
