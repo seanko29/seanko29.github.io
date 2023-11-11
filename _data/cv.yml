@@ -2,13 +2,11 @@
   type: map
   contents:
     - name: Full Name
-      value: Donggeun Sean Ko
-
+      value: Donggeun Ko
+    - name: Date of Birth
+      value: 29th April 1996
     - name: Languages
       value: Korean (Native), English (OPiC-AL, Fluent)
-
-    - name: Pronouns
-      value: He/Him 
 
 - title: Education
   type: time_table
@@ -17,15 +15,17 @@
       institution: Sungkyunkwan University, South Korea
       year: 2022-2024
       description:
-        - Description 1.
-        - Description 2.
+        - Department of Electrical and Computer Engineering
+        - Computer Vision
+        - Multi-modal
+        - Generative Models
 
     - title: Bachelors in Molecular Biotechnology
-      institution: Ghent University Global Campus, South Korea
+      institution: Ghent University Global Campus, South Korea & Universiteit Gent, Belgium
       year: 2015-2021
       description:
         - Merit-based Scholarship
-        - Description 2.
+        - Wrote thesis on Interpreting Neural Networks Trained for Detecting Translation Initiation Sites in DNA Sequences with Adversarial Inputs
 
 # - title: Experience
 #   type: time_table
