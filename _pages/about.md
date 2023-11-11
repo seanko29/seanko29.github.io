@@ -19,3 +19,7 @@ social: true  # includes social icons at the bottom of the page
 ---
 
 I am currently a graduate student in [MAIN Lab](https://sites.google.com/view/skku-milab) @ Sungkyunkwan University, advised by [Prof. Jaekwang Kim](https://dramatic-samba-372.notion.site/Jaekwang-KIM-b5955ec7d50f488b8ff7bd29f9148641) and was a SKT AI Fellowship member (4th generation) with SKT Supernova team in 2022. I received my B.S degree in Molecular Biotechnology @ Ghent University Global Campus and wrote my bachelor thesis under the supervision of [Dr. Utku Ozbulak](https://www.linkedin.com/in/utkuozbulak/) and Prof. Wesley De Neve. My major research interest lies but is not limited to computer vision, generative model, self-supervised learning and LLMs. 
+
+You can find my [CV here](https://drive.google.com/file/d/1llWa0V-eV_wTFNlXdVHqIEpd94y-APEW/view?usp=sharing). 
+
+If you have any inquiries, feel free to contact me through my [email](mailto:donggeunko@gmail.com).
