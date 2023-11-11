@@ -1,8 +1,9 @@
 ---
 layout: post
-date: 2015-10-22 15:59:00-0400
+title: Our paper MGCMA:Multi-scale Generator with Channel-wise Mask Attention to generate Synthetic Contrast-enhanced Chest Computed Tomography was awarded Best Paper Award in ACM SAC 2023!
+date: 2023-02-27 14:15:00-0400
 inline: true
 related_posts: false
 ---
 
-A simple inline announcement.
+Our paper MGCMA:Multi-scale Generator with Channel-wise Mask Attention to generate Synthetic Contrast-enhanced Chest Computed Tomography was presented in ACM SAC 2023. It was awarded Best Paper Award in AI and Agents.
