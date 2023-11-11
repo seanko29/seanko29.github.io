@@ -14,8 +14,8 @@ profile:
     <p>Suwon, South Korea</p>
 
 news: true  # includes a list of news items
-selected_papers: true # includes a list of papers marked as "selected={true}"
+selected_papers: false  # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 ---
 
-I am currently a graduate student in [MAIN Lab](https://sites.google.com/view/skku-milab) @ Sungkyunkwan University, advised by [Prof. Jaekwang Kim](https://dramatic-samba-372.notion.site/Jaekwang-KIM-b5955ec7d50f488b8ff7bd29f9148641) and was a SKT AI Fellowship member (4th generation) with SKT Supernova team in 2022. I received my B.S degree in Molecular Biotechnology @ Ghent University Global Campus and wrote my bachelor thesis under the supervision of [Dr. Utku Ozbulak](https://www.linkedin.com/in/utkuozbulak/) and Prof. Wesley De Neve. My major research interest lies but is not limited to computer vision, especially generative model, self-supervised learning and LLMs. 
+I am currently a graduate student in [MAIN Lab](https://sites.google.com/view/skku-milab) @ Sungkyunkwan University, advised by [Prof. Jaekwang Kim](https://dramatic-samba-372.notion.site/Jaekwang-KIM-b5955ec7d50f488b8ff7bd29f9148641) and was a SKT AI Fellowship member (4th generation) with SKT Supernova team in 2022. I received my B.S degree in Molecular Biotechnology @ Ghent University Global Campus and wrote my bachelor thesis under the supervision of [Dr. Utku Ozbulak](https://www.linkedin.com/in/utkuozbulak/) and Prof. Wesley De Neve. My major research interest lies but is not limited to computer vision, generative model, self-supervised learning and LLMs. 
