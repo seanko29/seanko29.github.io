@@ -16,7 +16,7 @@ nav_order: 5
     <figure> <picture> <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/lg-dacon-480.webp"> <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/lg-dacon-800.webp"> <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/lg-dacon-1400.webp"> <img src="/assets/img/skku.png" class="preview z-depth-1 rounded" width="auto" height="auto" alt="lg-dacon.png" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture></figure>
    </div>
    <div id="submission1" class="col-sm-8">
-    <div class="title">Teaching Assistant for AI기초와활용 (DASF005_I2, DASF005_I4)</div>
+    <div class="title">Teaching Assistant for AI기초와활용 (Fundamentals and Applications of AI) (DASF005_I2, DASF005_I4)</div>
     <div class="periodical"><em>Sungkyunkwan University</em>, Mar. 2023 - Present </div>
     <div class="periodical"> </div>
    </div>
