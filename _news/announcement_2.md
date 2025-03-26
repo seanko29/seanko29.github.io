@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Our paper “AmpliBias:Mitigating Dataset Bias through Bias Amplification in Few-Shot Learning for Generative Models” is accepted at CIKM 2023, Birmingham (Poster, Short Paper)!
+title: Our paper “AmpliBias: Mitigating Dataset Bias through Bias Amplification in Few-Shot Learning for Generative Models” is accepted at CIKM 2023, Birmingham (Poster, Short Paper)!
 date: 2023-10-23 14:15:00-0400
 inline: false
 related_posts: false
