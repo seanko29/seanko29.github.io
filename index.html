@@ -1,3 +1,416 @@
----
-layout: home
----
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Donggeun (Sean) Ko — graduate researcher in computer vision, generative models, and LLMs." />
+  <meta name="author" content="Donggeun Ko" />
+
+  <meta property="og:title" content="Donggeun (Sean) Ko" />
+  <meta property="og:description" content="Graduate researcher — computer vision, generative models, and LLMs." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/assets/img/uploads/profile2.jpg" />
+
+  <title>Donggeun (Sean) Ko</title>
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧪</text></svg>" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
+
+  <!-- Set theme before paint to avoid flash -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("theme");
+        if (!t) t = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="stylesheet" href="/assets/css/main.css" />
+</head>
+<body>
+
+  <div class="layout">
+
+    <!-- ============ SIDEBAR ============ -->
+    <aside class="sidebar">
+      <div class="sidebar__inner">
+        <img class="avatar" src="/assets/img/uploads/profile2.jpg" alt="Donggeun Ko" />
+        <h1 class="name">Donggeun <span class="muted">“Sean”</span> Ko</h1>
+        <p class="tagline">AI Research Engineer</p>
+        <p class="subaffil">AiM Future</p>
+        <p class="subaffil subaffil--faint">Computer Vision · Generative Models</p>
+
+        <nav class="tabs" id="tabs">
+          <button class="tab is-active" data-tab="about" aria-selected="true">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span>About</span>
+          </button>
+          <button class="tab" data-tab="publications" aria-selected="false">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            <span>Publications</span>
+          </button>
+          <button class="tab" data-tab="archive" aria-selected="false">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="5" rx="1"/><path d="M4 9v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9"/><path d="M10 13h4"/></svg>
+            <span>Archive</span>
+          </button>
+          <button class="tab" data-tab="activities" aria-selected="false">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-3-3.87"/><path d="M13 3.13a4 4 0 0 1 0 7.75"/><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/></svg>
+            <span>Activities</span>
+          </button>
+        </nav>
+
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+          <svg class="ic-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+          <svg class="ic-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <span class="theme-toggle__label">Dark mode</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- ============ CONTENT ============ -->
+    <main class="content">
+
+      <!-- ---------- About panel ---------- -->
+      <section class="panel is-active" id="panel-about" role="tabpanel">
+
+        <div class="bio">
+          <p>
+            Hi! I'm <strong>Sean</strong> 👋 — I am currently working as an <strong>AI Research Engineer</strong>
+            at <a href="https://aimfuture.ai" target="_blank" rel="noopener">AiM Future</a>. Previously, I was an
+            Applied Artificial Intelligence graduate student @ <a href="https://www.skku.edu" target="_blank" rel="noopener">Sungkyunkwan
+            University</a>, researching in <strong>MAIN Lab</strong>, advised by <strong>Prof. Jaekwang Kim</strong>.
+            I also was an <strong>SKT AI Fellowship</strong> member (4th generation) with the
+            <strong>SKT Supernova team</strong> in 2022. I received my B.S. degree in Molecular Biotechnology @
+            <strong>Ghent University Global Campus</strong> and wrote my bachelor thesis under the supervision of
+            <a href="https://utkuozbulak.github.io/" target="_blank" rel="noopener">Dr.&nbsp;Utku&nbsp;Ozbulak</a>
+            and <a href="https://ai.ugent.be/people/WesleyDeNeve.en.html" target="_blank" rel="noopener">Prof.&nbsp;Wesley&nbsp;De&nbsp;Neve</a>.
+            My research interests center on <strong>efficient &amp; generative deep learning</strong> —
+            <strong>diffusion</strong> &amp; <strong>flow-matching</strong> models, <strong>quantization</strong> &amp;
+            <strong>knowledge distillation</strong>, and <strong>VLMs</strong>, <strong>VLAs</strong>, and <strong>LLMs</strong>.
+          </p>
+          <p>
+            Feel free to reach out if you'd like to chat or collaborate!
+          </p>
+        </div>
+
+        <ul class="links">
+          <li><a href="mailto:seanko@g.skku.edu" title="Email">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+            <span>Email</span></a></li>
+          <li><a href="https://github.com/seanko29" target="_blank" rel="noopener" title="GitHub">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            <span>GitHub</span></a></li>
+          <li><a href="https://www.linkedin.com/in/donggeun-sean-ko-b78b57186/" target="_blank" rel="noopener" title="LinkedIn">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            <span>LinkedIn</span></a></li>
+          <li><a href="https://scholar.google.com/citations?user=SrYKBGQAAAAJ" target="_blank" rel="noopener" title="Google Scholar">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1 2.7 3 6 3s6-2 6-3v-5"/></svg>
+            <span>Google Scholar</span></a></li>
+          <li><a href="https://openreview.net/profile?id=~Donggeun_Ko1" target="_blank" rel="noopener" title="OpenReview">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 7v5l3 2"/></svg>
+            <span>OpenReview</span></a></li>
+          <li><a href="/assets/Donggeun_Ko_CV.pdf" target="_blank" rel="noopener" title="CV">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg>
+            <span>CV</span></a></li>
+        </ul>
+
+        <!-- Industry Experience -->
+        <h2 class="section__title">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          Industry Experience
+        </h2>
+        <div class="cards">
+          <article class="card">
+            <img class="logo" src="/assets/img/logos/aimfuture.svg" alt="AiM Future" />
+            <div class="card__main">
+              <h3 class="card__title">AiM Future, Inc.</h3>
+              <p class="card__sub">AI Research Engineer · Advanced Research Team
+                <span class="loc"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Seoul, Korea</span></p>
+              <p class="card__note">Edge-AI &amp; generative deep learning for vision</p>
+            </div>
+            <span class="when">Mar 2024 – Present</span>
+          </article>
+          <article class="card">
+            <img class="logo" src="/assets/img/logos/sktelecom.svg" alt="SK Telecom" />
+            <div class="card__main">
+              <h3 class="card__title">SK Telecom</h3>
+              <p class="card__sub">SK Telecom AI Fellowship — Supernova Team
+                <span class="loc"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Pangyo, Korea</span></p>
+              <p class="card__note">Deep learning for colorizing historical monochrome images (Team SKeTchbook)</p>
+              <!-- Replace the href="#" placeholders below with your real links. -->
+              <div class="card__links">
+                <a href="#" target="_blank" rel="noopener">Code</a>
+                <a href="#" target="_blank" rel="noopener">Demo UI</a>
+                <a href="#" target="_blank" rel="noopener">Research Proposal</a>
+                <a href="#" target="_blank" rel="noopener">Research Progress</a>
+                <a href="#" target="_blank" rel="noopener">Follow-up Study</a>
+              </div>
+            </div>
+            <span class="when">Jun 2022 – Nov 2022</span>
+          </article>
+        </div>
+
+        <!-- Education -->
+        <h2 class="section__title">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1 2.7 3 6 3s6-2 6-3v-5"/></svg>
+          Education
+        </h2>
+        <div class="edu">
+          <div class="edu__row">
+            <img class="logo" src="/assets/img/logos/skku.svg" alt="SKKU" />
+            <div>
+              <h3 class="edu__school">Sungkyunkwan University (SKKU)</h3>
+              <p class="edu__loc"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Seoul, Korea</p>
+              <p class="edu__deg">M.S. in Applied Artificial Intelligence</p>
+              <p class="edu__note">MAIN Lab · Advisor: Prof. Jaekwang Kim</p>
+            </div>
+            <span class="when">Mar 2022 – Mar 2024</span>
+          </div>
+          <div class="edu__row">
+            <img class="logo" src="/assets/img/logos/ghent.svg" alt="Ghent University" />
+            <div>
+              <h3 class="edu__school">Ghent University Global Campus</h3>
+              <p class="edu__loc"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Incheon, Korea &amp; Gent, Belgium</p>
+              <p class="edu__deg">B.S. in Molecular Biotechnology</p>
+              <p class="edu__note">Thesis advisors: Dr. Utku Ozbulak &amp; Prof. Wesley De Neve</p>
+            </div>
+            <span class="when">Sep 2015 – Sep 2021</span>
+          </div>
+          <div class="edu__row">
+            <img class="logo" src="/assets/img/logos/brent.svg" alt="Brent International School Manila" />
+            <div>
+              <h3 class="edu__school">Brent International School Manila</h3>
+              <p class="edu__loc"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Manila, Philippines</p>
+              <p class="edu__deg">High School · IB Diploma</p>
+            </div>
+            <span class="when">2011 – 2015</span>
+          </div>
+        </div>
+
+        <!-- Research Experience -->
+        <h2 class="section__title">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 2v7.31M14 9.3V2M8.5 2h7M14 9.3a6.5 6.5 0 1 1-4 0M5.58 16.5h12.85"/></svg>
+          Research Experience
+        </h2>
+        <div class="cards">
+          <article class="card">
+            <img class="logo" src="/assets/img/logos/skku.svg" alt="SKKU" />
+            <div class="card__main">
+              <h3 class="card__title">MAIN Lab @ Sungkyunkwan University</h3>
+              <p class="card__sub">Graduate Research Assistant
+                <span class="loc"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Seoul, Korea</span></p>
+              <p class="card__note">Advisor: Prof. Jaekwang Kim</p>
+            </div>
+            <span class="when">Mar 2022 – Mar 2024</span>
+          </article>
+          <article class="card">
+            <img class="logo" src="/assets/img/logos/ghent.svg" alt="Ghent University" />
+            <div class="card__main">
+              <h3 class="card__title">Ghent University Global Campus</h3>
+              <p class="card__sub">Undergraduate Research
+                <span class="loc"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Incheon, Korea</span></p>
+              <p class="card__note">Advisors: Dr. Utku Ozbulak &amp; Prof. Wesley De Neve</p>
+            </div>
+            <span class="when">2020 – 2021</span>
+          </article>
+        </div>
+
+        <!-- News -->
+        <h2 class="section__title">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-4 0v-9a2 2 0 0 1 2-2h2"/><path d="M18 14h-8M15 18h-5M10 6h8v4h-8z"/></svg>
+          News
+        </h2>
+        <ul class="news">
+          <li><span class="news__date">Oct 2025</span><span class="news__item">First-author paper accepted as an <strong>Oral</strong> at the <strong>ICCV&nbsp;2025</strong> AIGENS workshop (Multi-Scale Contrastive-Adversarial Distillation for Super-Resolution).</span></li>
+          <li><span class="news__date">Mar 2025</span><span class="news__item">🏆 Our work won <strong>3rd place</strong> in the 6th Thermal Image Super-Resolution Challenge (TISRC) — Track&nbsp;1, at the 21st IEEE PBVS Workshop @ <strong>CVPR&nbsp;2025</strong>. The code is open-sourced <a href="https://github.com/seanko29/PBVS25_TISR25_Track1" target="_blank" rel="noopener">here</a> and the paper is available <a href="https://openaccess.thecvf.com/content/CVPR2025W/PBVS/papers/Rivadeneira_Thermal_Image_Super-Resolution_Challenge_Results_-_PBVS_2025_CVPRW_2025_paper.pdf" target="_blank" rel="noopener">here</a>.</span></li>
+          <li><span class="news__date">Mar 2025</span><span class="news__item">“Debiasing Classifiers by Amplifying Bias with Latent Diffusion and Large Language Models” accepted at <strong>ACM&nbsp;SAC&nbsp;2025</strong> — presented in Sicily, Italy.</span></li>
+          <li><span class="news__date">Mar 2024</span><span class="news__item">Joined <strong>AiM Future</strong> as an <strong>AI Research Engineer</strong>.</span></li>
+          <li><span class="news__date">Mar 2024</span><span class="news__item"><strong>DiffInject</strong> accepted at the <strong>CVPR&nbsp;2024</strong> SynData4CV workshop. <a href="https://arxiv.org/abs/2406.06134" target="_blank" rel="noopener">arXiv</a></span></li>
+          <li><span class="news__date">Mar 2024</span><span class="news__item">“Retrieval-Based Disease Prediction for Myocardial Injury after Noncardiac Surgery” accepted at the <strong>AAAI&nbsp;2024</strong> Spring Symposium on Clinical Foundation Models.</span></li>
+          <li><span class="news__date">Nov 2023</span><span class="news__item">A patent on hierarchical contrastive learning for sequential recommendation was filed in Korea.</span></li>
+          <li><span class="news__date">Mar 2023</span><span class="news__item">🏆 <strong>Best Paper Award</strong> (AI &amp; Agents) at <strong>ACM&nbsp;SAC&nbsp;2023</strong> for MGCMA.</span></li>
+          <li><span class="news__date">Nov 2022</span><span class="news__item">🏆 <strong>1st Place</strong> &amp; <strong>Minister's Award</strong>, 4th AI Grand Challenge (Phase&nbsp;3, Track&nbsp;1).</span></li>
+          <li><span class="news__date">Nov 2022</span><span class="news__item">🏆 <strong>Grand Prize</strong>, 4th <strong>SKT AI Fellowship</strong> (Supernova team).</span></li>
+          <li><span class="news__date">Mar 2022</span><span class="news__item">Began my M.S. in Applied AI at <strong>SKKU MAIN Lab</strong>.</span></li>
+        </ul>
+
+      </section>
+
+      <!-- ---------- Publications panel ---------- -->
+      <section class="panel" id="panel-publications" role="tabpanel" hidden>
+        <h2 class="section__title">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          Publications
+        </h2>
+        <p class="section__note">* denotes equal contribution. See <a href="https://scholar.google.com/citations?user=SrYKBGQAAAAJ" target="_blank" rel="noopener">Google&nbsp;Scholar</a> for the full, up-to-date list.</p>
+
+        <h3 class="pub-group">Preprints &amp; Under Review</h3>
+        <article class="pub">
+          <h3 class="pub__title">Bridging Inductive Bias Gaps in Image Super-Resolution via Frequency-Aware Knowledge Distillation</h3>
+          <p class="pub__authors"><strong>Donggeun Ko</strong>, et al. &nbsp;<span class="muted">(first author)</span></p>
+          <p class="pub__venue">Under review, ECCV 2026</p>
+        </article>
+        <article class="pub">
+          <h3 class="pub__title">DiffInject++: Group-Agnostic Debiasing via Bias Contrast Mining and Diffusion-Based Content Injection</h3>
+          <p class="pub__authors"><strong>Donggeun Ko</strong>, et al. &nbsp;<span class="muted">(first author)</span></p>
+          <p class="pub__venue">Under review, ECCV 2026</p>
+        </article>
+        <article class="pub">
+          <h3 class="pub__title">Flow Straight to Reality: Perceptually Consistent Flow Matching for Efficient Image Restoration</h3>
+          <p class="pub__authors">…, <strong>Donggeun Ko</strong>, et al. &nbsp;<span class="muted">(second author)</span></p>
+          <p class="pub__venue">Under review, ECCV 2026</p>
+        </article>
+        <!-- Author lists are placeholders — replace "…"/"et al." with the real co-authors. -->
+
+        <h3 class="pub-group">Published</h3>
+        <article class="pub">
+          <h3 class="pub__title">Multi-Scale Contrastive-Adversarial Distillation for Super-Resolution</h3>
+          <p class="pub__authors"><strong>Donggeun Ko</strong>, et al.</p>
+          <p class="pub__venue">ICCV 2025 Workshop (AIGENS), 2025 · Oral Presentation &nbsp;·&nbsp; <a href="https://openaccess.thecvf.com/content/ICCV2025W/AIGENS/papers/Ko_Multi-Scale_Contrastive-Adversarial_Distillation_for_Super-Resolution_ICCVW_2025_paper.pdf" target="_blank" rel="noopener">Paper</a> &nbsp;·&nbsp; <a href="https://github.com/seanko29/mcadkd" target="_blank" rel="noopener">Code</a></p>
+        </article>
+        <article class="pub">
+          <h3 class="pub__title">Debiasing Classifiers by Amplifying Bias with Latent Diffusion and Large Language Models</h3>
+          <p class="pub__authors"><strong>Donggeun Ko</strong>, Dongjun Lee, Namjun Park, Wonkyeong Shim, Jaekwang Kim</p>
+          <p class="pub__venue">ACM Symposium on Applied Computing (SAC), 2025</p>
+        </article>
+        <article class="pub">
+          <h3 class="pub__title">DiffInject: Revisiting Debias via Synthetic Data Generation using Diffusion-based Style Injection</h3>
+          <p class="pub__authors"><strong>Donggeun Ko</strong>, Sangwoo Jo, Dongjun Lee, Namjun Park, Jaekwang Kim</p>
+          <p class="pub__venue">SynData4CV Workshop, CVPR 2024 &nbsp;·&nbsp; <a href="https://arxiv.org/abs/2406.06134" target="_blank" rel="noopener">arXiv</a></p>
+        </article>
+        <article class="pub">
+          <h3 class="pub__title">AmpliBias: Mitigating Dataset Bias through Bias Amplification in Few-Shot Learning for Generative Models</h3>
+          <p class="pub__authors"><strong>Donggeun Ko</strong>, Dongjun Lee, Namjun Park, Kyoungrae Noh, Hyeonjin Park, Jaekwang Kim</p>
+          <p class="pub__venue">ACM International Conference on Information and Knowledge Management (CIKM), 2023</p>
+        </article>
+        <article class="pub">
+          <h3 class="pub__title">A-ColViT: Real-time Interactive Colorization by Adaptive Vision Transformer</h3>
+          <p class="pub__authors">Gwanghan Lee, Saebyeol Shin, <strong>Donggeun Ko</strong>, Jiyeon Jung, Simon S. Woo</p>
+          <p class="pub__venue">Practical Deep Learning in the Wild Workshop, AAAI 2023</p>
+        </article>
+        <article class="pub">
+          <h3 class="pub__title">Deepfake Detection for Facial Images with Facemasks</h3>
+          <p class="pub__authors"><strong>Donggeun Ko</strong>, Sangjun Lee, Jinyong Park, Saebyeol Shin, Donghee Hong, Simon S. Woo</p>
+          <p class="pub__venue">Workshop on Security Implications of Deepfakes &amp; Cheapfakes, 2022 &nbsp;·&nbsp; <a href="https://arxiv.org/abs/2202.11359" target="_blank" rel="noopener">arXiv</a></p>
+        </article>
+        <article class="pub">
+          <h3 class="pub__title">A²: Adaptive Augmentation for Effectively Mitigating Dataset Bias</h3>
+          <p class="pub__authors">Jaeju An, Taejune Kim, <strong>Donggeun Ko</strong>, Sangyup Lee, Simon S. Woo</p>
+          <p class="pub__venue">Asian Conference on Computer Vision (ACCV), 2022</p>
+        </article>
+
+        <details class="pub-more">
+          <summary>More publications</summary>
+          <article class="pub">
+            <h3 class="pub__title">PacECG-Net: A Multi-modal Approach Integrating LLMs and ECG for LVSD Classification in Pacemaker Patients</h3>
+            <p class="pub__authors">Wonkyeong Shim, Namjun Park, <strong>Donggeun Ko</strong>, et al., Jaekwang Kim</p>
+            <p class="pub__venue">ACM Symposium on Applied Computing (SAC), 2025</p>
+          </article>
+          <article class="pub">
+            <h3 class="pub__title">Hierarchical Contrastive Learning with Multiple Augmentations for Sequential Recommendation</h3>
+            <p class="pub__authors">Dongjun Lee, <strong>Donggeun Ko</strong>, Jaekwang Kim</p>
+            <p class="pub__venue">ACM Symposium on Applied Computing (SAC), 2025</p>
+          </article>
+          <article class="pub">
+            <h3 class="pub__title">LMCG-Net: Integrating LLMs and ECG for LVEF-Based Classification for Pacing Patients</h3>
+            <p class="pub__authors">Wonkyeong Shim, Namjun Park, <strong>Donggeun Ko</strong>, et al., Jaekwang Kim</p>
+            <p class="pub__venue">IEEE International Conference on Bioinformatics and Biomedicine (BIBM), 2024</p>
+          </article>
+          <article class="pub">
+            <h3 class="pub__title">Retrieval-based Disease Prediction for Myocardial Injury after Noncardiac Surgery</h3>
+            <p class="pub__authors">Namjun Park, <strong>Donggeun Ko</strong>, Dongjun Lee, Sungjun Kim, Jaekwang Kim</p>
+            <p class="pub__venue">AAAI Spring Symposium on Clinical Foundation Models, 2024</p>
+          </article>
+          <article class="pub">
+            <h3 class="pub__title">MGCMA: Multi-scale Generator with Channel-wise Mask Attention for Synthetic Contrast-enhanced Chest CT</h3>
+            <p class="pub__authors">Jeongho Kim, Yun-Gyoo Lee, <strong>Donggeun Ko</strong>, Taejune Kim, Soo-Youn Ham, Simon S. Woo</p>
+            <p class="pub__venue">ACM Symposium on Applied Computing (SAC), 2023</p>
+          </article>
+          <article class="pub">
+            <h3 class="pub__title">The Tenth NTIRE 2025 Efficient Super-Resolution Challenge Report</h3>
+            <p class="pub__authors">Bin Ren, Hang Guo, Lei Sun, et al. (challenge participant)</p>
+            <p class="pub__venue">CVPR Workshops, 2025</p>
+          </article>
+        </details>
+      </section>
+
+      <!-- ---------- Archive panel ---------- -->
+      <section class="panel" id="panel-archive" role="tabpanel" hidden>
+        <h2 class="section__title">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M9 4H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-3"/><path d="m9 14 2 2 4-4"/></svg>
+          Academic Service
+        </h2>
+        <p class="section__note">Conference Reviewer</p>
+        <ul class="list">
+          <li>BMVC 2025</li>
+          <li>KDD 2024</li>
+          <li>CIKM 2024</li>
+        </ul>
+
+        <h2 class="section__title">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+          Patents
+        </h2>
+        <article class="pub">
+          <h3 class="pub__title">순차적 추천을 위한 계층적 대조 학습 방법 및 계층적 대조 학습 장치 <span class="muted">(Hierarchical Contrastive Learning Method &amp; Apparatus for Sequential Recommendation)</span></h3>
+          <p class="pub__venue">Patent filed in Korea · Nov 2023</p>
+        </article>
+        <article class="pub">
+          <h3 class="pub__title">Method and Apparatus for Generating Contrast-Enhanced Image from Non-Contrast Image using a Neural Network Model</h3>
+          <p class="pub__authors">Simon S. Woo, Jeongho Kim, Taejune Kim, <strong>Donggeun Ko</strong>, Yun-Gyoo Lee, Soo-Youn Ham</p>
+          <p class="pub__venue">U.S. Patent Application 18/603,467 · 2024</p>
+        </article>
+      </section>
+
+      <!-- ---------- Activities panel (외부활동) ---------- -->
+      <section class="panel" id="panel-activities" role="tabpanel" hidden>
+        <h2 class="section__title">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-3-3.87"/><path d="M13 3.13a4 4 0 0 1 0 7.75"/><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/></svg>
+          Community &amp; Open Research
+        </h2>
+        <div class="cards">
+          <article class="card">
+            <img class="logo" src="/assets/img/logos/pseudolab.png" alt="Pseudo Lab" />
+            <div class="card__main">
+              <h3 class="card__title">가짜연구소 (Pseudo Lab)</h3>
+              <p class="card__sub">Text-to-Image Generation — Paper/Code Contributor &amp; Learner
+                <span class="loc"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Suwon, Korea</span></p>
+              <p class="card__note">Reviewed papers &amp; code on image generation and generative AI, and ran experiments fine-tuning diffusion-based models. Contributed to the community's GitHub and WikiDocs.</p>
+              <div class="card__links">
+                <a href="https://github.com/Pseudo-Lab" target="_blank" rel="noopener">GitHub</a>
+                <a href="https://wikidocs.net/book/18009" target="_blank" rel="noopener">WikiDocs</a>
+              </div>
+            </div>
+            <span class="when">May 2023 – Dec 2023</span>
+          </article>
+          <article class="card">
+            <img class="logo" src="/assets/img/logos/modulabs.png" alt="Modulabs" />
+            <div class="card__main">
+              <h3 class="card__title">모두의연구소 (Modulabs) — Robotics Lab</h3>
+              <p class="card__sub">Researcher — Hierarchical VLA-RL for Humanoid Control
+                <span class="loc"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Seoul, Korea</span></p>
+              <p class="card__note">Hierarchical VLA–RL architecture for whole-body humanoid manipulation &amp; locomotion (SmolVLA + RL; HumanoidBench, Unitree H1, MuJoCo).</p>
+              <div class="card__links">
+                <a href="https://modulabs.co.kr" target="_blank" rel="noopener">Modulabs</a>
+              </div>
+            </div>
+            <span class="when">Jan 2026 – Present</span>
+          </article>
+        </div>
+      </section>
+
+      <footer class="foot">
+        © <span id="year">2026</span> Donggeun Ko
+      </footer>
+
+    </main>
+  </div>
+
+  <script src="/assets/js/main.js"></script>
+</body>
+</html>
