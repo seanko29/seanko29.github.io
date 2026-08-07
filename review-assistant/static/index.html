@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>리뷰 초안 생성기</title>
+<style>
+  :root{
+    --bg:#faf9f7; --panel:#fff; --ink:#1a1917; --muted:#6b6862; --line:#e3e0da;
+    --accent:#b4552d; --accent-soft:#fdf1ea; --warn:#8a6d1f; --warn-soft:#fdf6e0;
+    --radius:12px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --bg:#161614; --panel:#1e1d1a; --ink:#eeece7; --muted:#9d998f;
+           --line:#33312c; --accent:#e08a5e; --accent-soft:#2b211b;
+           --warn:#d6b45c; --warn-soft:#2a2415; }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+       font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard",
+                   "Malgun Gothic",system-ui,sans-serif;
+       line-height:1.65;font-size:15px}
+  .wrap{max-width:1120px;margin:0 auto;padding:28px 20px 80px}
+  h1{font-size:22px;margin:0 0 4px}
+  .sub{color:var(--muted);font-size:13.5px;margin:0 0 24px}
+  .grid{display:grid;grid-template-columns:minmax(0,380px) minmax(0,1fr);gap:20px;align-items:start}
+  @media (max-width:860px){ .grid{grid-template-columns:1fr} }
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
+  .card + .card{margin-top:16px}
+  label{display:block;font-size:12.5px;font-weight:600;color:var(--muted);
+        margin:0 0 5px;letter-spacing:.01em}
+  select,input,textarea{width:100%;padding:9px 11px;border:1px solid var(--line);
+        border-radius:8px;background:var(--bg);color:var(--ink);font:inherit;font-size:14px}
+  textarea{resize:vertical;min-height:72px}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .field{margin-bottom:13px}
+  button{font:inherit;cursor:pointer;border-radius:8px;border:1px solid transparent}
+  .primary{width:100%;padding:12px;background:var(--accent);color:#fff;font-weight:600;font-size:15px}
+  .primary:disabled{opacity:.5;cursor:not-allowed}
+  .ghost{padding:6px 11px;background:transparent;border-color:var(--line);
+         color:var(--muted);font-size:12.5px}
+  .ghost:hover{color:var(--ink)}
+  #drop{border:2px dashed var(--line);border-radius:var(--radius);padding:26px 16px;
+        text-align:center;color:var(--muted);cursor:pointer;transition:.15s;font-size:13.5px}
+  #drop.over{border-color:var(--accent);background:var(--accent-soft);color:var(--accent)}
+  #preview{max-width:100%;max-height:230px;border-radius:8px;display:block;margin:0 auto}
+  details{margin-top:14px;border-top:1px solid var(--line);padding-top:12px}
+  summary{cursor:pointer;font-size:13px;color:var(--muted);font-weight:600}
+  .draft{border:1px solid var(--line);border-radius:var(--radius);padding:15px 16px;margin-bottom:13px;
+         background:var(--panel)}
+  .draft-head{display:flex;align-items:center;gap:9px;margin-bottom:9px}
+  .tone{font-weight:700;font-size:14px}
+  .count{color:var(--muted);font-size:12px}
+  .draft-head .ghost{margin-left:auto}
+  .body{white-space:pre-wrap;word-break:break-word;font-size:15px}
+  mark{background:var(--warn-soft);color:var(--warn);padding:1px 4px;border-radius:4px;
+       font-weight:600;border:1px dashed var(--warn)}
+  .facts{background:var(--accent-soft);border:1px solid var(--line);border-radius:var(--radius);
+         padding:14px 16px;margin-bottom:16px;font-size:13.5px}
+  .facts h3{margin:0 0 7px;font-size:13px;letter-spacing:.02em;text-transform:uppercase;color:var(--muted)}
+  .facts ul{margin:0 0 4px;padding-left:19px}
+  .facts li{margin-bottom:3px}
+  .caution{background:var(--warn-soft);border:1px solid var(--warn);color:var(--warn)}
+  .caution h3{color:var(--warn)}
+  .empty{color:var(--muted);text-align:center;padding:56px 20px;font-size:14px}
+  .err{background:var(--warn-soft);border:1px solid var(--warn);color:var(--warn);
+       border-radius:var(--radius);padding:13px 15px;font-size:14px;margin-bottom:16px}
+  .spin{display:inline-block;width:14px;height:14px;border:2px solid #fff6;
+        border-top-color:#fff;border-radius:50%;animation:s .7s linear infinite;
+        vertical-align:-2px;margin-right:7px}
+  @keyframes s{to{transform:rotate(360deg)}}
+  .note{font-size:12px;color:var(--muted);margin-top:7px;line-height:1.5}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>리뷰 초안 생성기</h1>
+  <p class="sub">
+    구매한 상품 사진을 올리면 플랫폼에 맞는 리뷰 초안을 만들어 줍니다.
+    <strong>사진으로 알 수 없는 것(맛·착용감·배송 등)은 <mark>[이렇게]</mark> 표시</strong>되니
+    직접 채운 뒤 올리세요.
+  </p>
+
+  <div class="grid">
+    <!-- 좌측: 입력 -->
+    <div>
+      <div class="card">
+        <div id="drop">
+          <div id="dropText">사진을 끌어다 놓거나 클릭해서 선택<br><small>JPG · PNG · HEIC</small></div>
+          <img id="preview" hidden alt="업로드한 사진 미리보기">
+        </div>
+        <input type="file" id="file" accept="image/*" hidden>
+
+        <div class="field" style="margin-top:15px">
+          <label for="platform">어디에 올릴 리뷰인가요</label>
+          <select id="platform"></select>
+        </div>
+
+        <div class="field">
+          <label for="category">카테고리 <span style="font-weight:400">— 비워두면 사진 보고 자동 판별</span></label>
+          <select id="category"><option value="">자동 판별</option></select>
+        </div>
+
+        <div class="field">
+          <label for="note">직접 겪은 것 (선택)</label>
+          <textarea id="note" placeholder="예) 생각보다 얇음. 배송 하루 만에 옴. 색은 사진보다 어두움."></textarea>
+          <p class="note">여기 적은 내용은 실제 경험으로 취급해서 초안에 반영합니다.
+            맛·착용감처럼 사진에 안 나오는 건 여기 적어주면 자리표시자 대신 문장이 됩니다.</p>
+        </div>
+
+        <button class="primary" id="go" disabled>초안 만들기</button>
+
+        <details id="profileBox">
+          <summary>내 정보 (무신사 사이즈 리뷰 등에 사용)</summary>
+          <div style="margin-top:12px">
+            <div class="row">
+              <div class="field"><label for="height_cm">키 (cm)</label><input id="height_cm"></div>
+              <div class="field"><label for="weight_kg">몸무게 (kg)</label><input id="weight_kg"></div>
+            </div>
+            <div class="row">
+              <div class="field"><label for="top_size">평소 상의</label><input id="top_size" placeholder="M"></div>
+              <div class="field"><label for="bottom_size">평소 하의</label><input id="bottom_size" placeholder="30"></div>
+            </div>
+            <div class="row">
+              <div class="field"><label for="shoe_size">발 (mm)</label><input id="shoe_size" placeholder="270"></div>
+              <div class="field"><label for="age_range">연령대</label><input id="age_range" placeholder="30대"></div>
+            </div>
+            <div class="field"><label for="skin_type">피부 타입</label><input id="skin_type" placeholder="복합성"></div>
+            <button class="ghost" id="saveProfile">저장</button>
+            <span id="profileMsg" class="note"></span>
+            <p class="note" id="profilePath"></p>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <!-- 우측: 결과 -->
+    <div id="out">
+      <div class="card empty">왼쪽에 사진을 올리고 <b>초안 만들기</b>를 누르세요.</div>
+    </div>
+  </div>
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+const PROFILE_FIELDS = ["height_cm","weight_kg","top_size","bottom_size","shoe_size","skin_type","age_range"];
+let selectedFile = null;
+let lastResult = null;
+
+// ---------- 초기 설정 로드 ----------
+(async function init(){
+  const cfg = await (await fetch("/api/config")).json();
+  cfg.platforms.forEach(p => $("platform").add(new Option(p.label, p.key)));
+  cfg.categories.forEach(c => $("category").add(new Option(c.label, c.key)));
+  PROFILE_FIELDS.forEach(f => { if (cfg.profile[f]) $(f).value = cfg.profile[f]; });
+  $("profilePath").textContent = "저장 위치: " + cfg.profile_path + " (이 컴퓨터에만 저장됩니다)";
+  if (!cfg.api_key_configured) {
+    $("out").innerHTML = `<div class="err"><b>API 키가 설정되지 않았습니다.</b><br>
+      <code>.env.example</code>을 <code>.env</code>로 복사하고 ANTHROPIC_API_KEY를 채운 뒤
+      서버를 다시 시작하세요.</div>`;
+  }
+})();
+
+// ---------- 파일 선택 / 드래그앤드롭 ----------
+const drop = $("drop");
+drop.onclick = () => $("file").click();
+$("file").onchange = e => setFile(e.target.files[0]);
+["dragenter","dragover"].forEach(ev =>
+  drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.add("over"); }));
+["dragleave","drop"].forEach(ev =>
+  drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.remove("over"); }));
+drop.addEventListener("drop", e => setFile(e.dataTransfer.files[0]));
+
+function setFile(f){
+  if (!f) return;
+  selectedFile = f;
+  $("go").disabled = false;
+  // HEIC는 브라우저가 미리보기를 못 그릴 수 있다. 실패하면 파일명만 보여준다.
+  const url = URL.createObjectURL(f);
+  const img = $("preview");
+  img.onload = () => { $("dropText").hidden = true; img.hidden = false; URL.revokeObjectURL(url); };
+  img.onerror = () => { $("dropText").innerHTML = "선택됨: " + f.name; URL.revokeObjectURL(url); };
+  img.src = url;
+}
+
+// ---------- 프로필 저장 ----------
+$("saveProfile").onclick = async () => {
+  const body = {};
+  PROFILE_FIELDS.forEach(f => body[f] = $(f).value.trim());
+  const r = await fetch("/api/profile", {
+    method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify(body)
+  });
+  $("profileMsg").textContent = r.ok ? " 저장했습니다." : " 저장 실패";
+  setTimeout(() => $("profileMsg").textContent = "", 2500);
+};
+
+// ---------- 생성 ----------
+$("go").onclick = async () => {
+  if (!selectedFile) return;
+  const fd = new FormData();
+  fd.append("image", selectedFile);
+  fd.append("platform", $("platform").value);
+  fd.append("category", $("category").value);
+  fd.append("note", $("note").value);
+  await run(() => fetch("/api/generate", { method:"POST", body: fd }));
+};
+
+async function run(request){
+  const btn = $("go");
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spin"></span>만드는 중… (10~30초)';
+  try {
+    const r = await request();
+    const data = await r.json();
+    if (!r.ok) throw new Error(data.detail || "알 수 없는 오류");
+    lastResult = data;
+    render(data);
+  } catch (e) {
+    $("out").innerHTML = `<div class="err"><b>실패했습니다.</b><br>${esc(e.message)}</div>`;
+  } finally {
+    btn.disabled = false;
+    btn.textContent = "초안 만들기";
+  }
+}
+
+// ---------- 렌더링 ----------
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+// 이스케이프 '후에' 자리표시자를 감싼다. 순서를 바꾸면 XSS가 열린다.
+const markPlaceholders = s => esc(s).replace(/\[[^\[\]]{1,60}\]/g, m => `<mark>${m}</mark>`);
+
+function render(d){
+  const drafts = d.drafts.map(dr => `
+    <div class="draft">
+      <div class="draft-head">
+        <span class="tone">${esc(dr.tone)}</span>
+        <span class="count">${[...dr.text].length}자</span>
+        <button class="ghost" data-copy="${esc(dr.text)}">복사</button>
+      </div>
+      <div class="body">${markPlaceholders(dr.text)}</div>
+    </div>`).join("");
+
+  $("out").innerHTML = `
+    <div class="facts">
+      <h3>사진에서 확인된 것 — ${esc(d.product_guess)}</h3>
+      <ul>${d.observed.map(o => `<li>${esc(o)}</li>`).join("")}</ul>
+    </div>
+    ${d.caution.length ? `<div class="facts caution">
+      <h3>올리기 전에 확인하세요</h3>
+      <ul>${d.caution.map(c => `<li>${esc(c)}</li>`).join("")}</ul>
+    </div>` : ""}
+    ${drafts}
+    <p class="note">초안은 그대로 올리는 용도가 아닙니다.
+      <mark>[표시된 부분]</mark>을 본인 경험으로 채우고, 사실과 다른 문장은 고친 뒤 올리세요.</p>`;
+
+  $("out").querySelectorAll("[data-copy]").forEach(b => {
+    b.onclick = async () => {
+      await navigator.clipboard.writeText(b.dataset.copy);
+      const t = b.textContent; b.textContent = "복사됨";
+      setTimeout(() => b.textContent = t, 1500);
+    };
+  });
+}
+</script>
+</body>
+</html>
