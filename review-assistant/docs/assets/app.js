@@ -1,7 +1,7 @@
 // UI 배선. 상태는 전부 브라우저 안에만 있다(서버 없음).
 
 import { CATEGORIES, PLATFORMS, getCategory, getPlatform } from "./data.js";
-import { DEFAULT_MAX_PX, DEFAULT_MODEL, generate, prepareImage, refine } from "./api.js";
+import { DEFAULT_EFFORT, DEFAULT_MAX_PX, DEFAULT_MODEL, generate, prepareImage, refine } from "./api.js";
 
 const $ = id => document.getElementById(id);
 const STORE = {
@@ -26,7 +26,8 @@ const writeJSON = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); 
 
 const getKey = () => { try { return localStorage.getItem(STORE.key) || ""; } catch { return ""; } };
 const getProfile = () => readJSON(STORE.profile, {});
-const getSettings = () => ({ model: DEFAULT_MODEL, maxPx: DEFAULT_MAX_PX, ...readJSON(STORE.settings, {}) });
+const getSettings = () => ({ model: DEFAULT_MODEL, maxPx: DEFAULT_MAX_PX, effort: DEFAULT_EFFORT,
+                             ...readJSON(STORE.settings, {}) });
 
 // ------------------------------------------------------------ 안전한 렌더링
 
@@ -47,6 +48,7 @@ function init() {
   const s = getSettings();
   $("model").value = s.model;
   $("maxPx").value = s.maxPx;
+  $("effort").value = s.effort;
 
   renderKeyState();
   bind();
@@ -109,8 +111,9 @@ function bind() {
   $("saveSettings").onclick = () => {
     const px = Number($("maxPx").value);
     writeJSON(STORE.settings, {
-      model: $("model").value.trim() || DEFAULT_MODEL,
+      model: $("model").value || DEFAULT_MODEL,
       maxPx: Number.isFinite(px) ? px : DEFAULT_MAX_PX,
+      effort: $("effort").value || DEFAULT_EFFORT,
     });
     flash($("settingsMsg"), "저장했습니다.");
   };
@@ -155,7 +158,7 @@ async function runGenerate() {
   await run(async signal => {
     const image = await prepareImage(file, settings.maxPx);
     const result = await generate({
-      apiKey: getKey(), model: settings.model, image,
+      apiKey: getKey(), model: settings.model, effort: settings.effort, image,
       platformKey, categoryKey, profile: getProfile(), note, signal,
     });
     lastInputs = { observed: result.observed, categoryKey: result.category, note };
@@ -167,7 +170,7 @@ async function runRespin(platformKey) {
   if (!lastInputs) return;
   const settings = getSettings();
   await run(signal => refine({
-    apiKey: getKey(), model: settings.model,
+    apiKey: getKey(), model: settings.model, effort: settings.effort,
     observed: lastInputs.observed, platformKey,
     categoryKey: lastInputs.categoryKey, profile: getProfile(),
     note: lastInputs.note, signal,

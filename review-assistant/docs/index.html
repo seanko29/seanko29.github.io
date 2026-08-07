@@ -103,7 +103,21 @@
           <div class="dbody">
             <div class="field">
               <label for="model">모델</label>
-              <input id="model" spellcheck="false">
+              <select id="model">
+                <option value="claude-opus-5">Opus 5 — 가장 정확 · 회당 약 90원</option>
+                <option value="claude-sonnet-5">Sonnet 5 — 권장 · 회당 약 25원</option>
+                <option value="claude-haiku-4-5">Haiku 4.5 — 가장 저렴 · 회당 약 10원</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="effort">생각 깊이 <span class="plain">(Haiku는 해당 없음)</span></label>
+              <select id="effort">
+                <option value="low">낮음 — 가장 저렴하고 빠름</option>
+                <option value="medium">보통 — 기본</option>
+                <option value="high">높음 — 더 꼼꼼하지만 비쌈</option>
+              </select>
+              <p class="note">사고 토큰이 비용의 큰 부분입니다. 리뷰 초안 정도면
+                '낮음'이나 '보통'으로 충분합니다.</p>
             </div>
             <div class="field">
               <label for="maxPx">사진 축소 크기 (긴 변 픽셀)</label>

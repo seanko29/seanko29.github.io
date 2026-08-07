@@ -17,6 +17,7 @@ from . import categories, images, platforms
 from .profile import Profile
 
 DEFAULT_MODEL = "claude-opus-5"
+DEFAULT_EFFORT = "medium"
 
 Tone = Literal["담백", "친근", "상세"]
 CategoryKey = Literal[
@@ -139,6 +140,17 @@ def _model_name() -> str:
     return os.getenv("REVIEW_MODEL") or DEFAULT_MODEL
 
 
+def _output_config() -> dict:
+    """effort 를 낮추면 사고 토큰이 줄어 비용이 눈에 띄게 내려간다.
+
+    Haiku 4.5 는 effort 를 지원하지 않아 보내면 400 이 난다.
+    """
+    effort = os.getenv("REVIEW_EFFORT") or DEFAULT_EFFORT
+    if _model_name().startswith("claude-haiku"):
+        return {}
+    return {"effort": effort}
+
+
 def make_client() -> anthropic.Anthropic:
     """ANTHROPIC_API_KEY 또는 `ant auth login` 프로필에서 자격증명을 해석한다."""
     return anthropic.Anthropic()
@@ -169,6 +181,7 @@ def generate(
             }
         ],
         output_format=ReviewResult,
+        output_config=_output_config(),
     )
 
     if response.stop_reason == "refusal":
@@ -230,6 +243,7 @@ def refine(
         system=SYSTEM_PROMPT,
         messages=[{"role": "user", "content": text_prompt}],
         output_format=ReviewResult,
+        output_config=_output_config(),
     )
 
     if response.stop_reason == "refusal":

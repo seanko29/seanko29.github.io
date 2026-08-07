@@ -10,6 +10,7 @@ import {
 const ENDPOINT = "https://api.anthropic.com/v1/messages";
 export const DEFAULT_MODEL = "claude-opus-5";
 export const DEFAULT_MAX_PX = 1568;
+export const DEFAULT_EFFORT = "medium";
 export const HARD_MAX_PX = 2576;  // 이 이상 보내도 서버에서 다시 줄인다
 
 export const SYSTEM_PROMPT = `너는 한국 이커머스 리뷰 작성을 돕는 어시스턴트다. 사용자는 본인이 실제로 구매해서
@@ -170,7 +171,10 @@ export function buildRefinePrompt({ observed, platformKey, categoryKey, profile,
 
 // ---------------------------------------------------------------- 호출
 
-async function callClaude({ apiKey, model, content, signal }) {
+// Haiku 4.5 는 effort 파라미터를 지원하지 않는다(보내면 400).
+const supportsEffort = model => !/^claude-haiku/.test(model || "");
+
+async function callClaude({ apiKey, model, effort, content, signal }) {
   let res;
   try {
     res = await fetch(ENDPOINT, {
@@ -188,7 +192,11 @@ async function callClaude({ apiKey, model, content, signal }) {
         max_tokens: 8000,
         system: SYSTEM_PROMPT,
         messages: [{ role: "user", content }],
-        output_config: { format: { type: "json_schema", schema: REVIEW_SCHEMA } },
+        output_config: {
+          format: { type: "json_schema", schema: REVIEW_SCHEMA },
+          // effort 를 낮추면 사고 토큰이 줄어 비용이 눈에 띄게 내려간다.
+          ...(effort && supportsEffort(model) ? { effort } : {}),
+        },
       }),
     });
   } catch (err) {
@@ -244,9 +252,9 @@ async function describeHttpError(res) {
   }
 }
 
-export function generate({ apiKey, model, image, platformKey, categoryKey, profile, note, signal }) {
+export function generate({ apiKey, model, effort, image, platformKey, categoryKey, profile, note, signal }) {
   return callClaude({
-    apiKey, model, signal,
+    apiKey, model, effort, signal,
     content: [
       { type: "image", source: { type: "base64", media_type: image.media_type, data: image.data } },
       { type: "text", text: buildPrompt({ platformKey, categoryKey, profile, note }) },
@@ -254,9 +262,9 @@ export function generate({ apiKey, model, image, platformKey, categoryKey, profi
   });
 }
 
-export function refine({ apiKey, model, observed, platformKey, categoryKey, profile, note, signal }) {
+export function refine({ apiKey, model, effort, observed, platformKey, categoryKey, profile, note, signal }) {
   return callClaude({
-    apiKey, model, signal,
+    apiKey, model, effort, signal,
     content: buildRefinePrompt({ observed, platformKey, categoryKey, profile, note }),
   });
 }
