@@ -153,6 +153,23 @@ API 키 없이 돕니다. 이미지 파이프라인, 카테고리별 프로필 �
 
 지정하지 않으면 사진을 보고 자동 판별합니다.
 
+## 이 폴더를 독립 저장소로 옮기기
+
+이미 옮겼다면 건너뛰세요. GitHub에서 빈 저장소를 먼저 만든 뒤(README 체크 해제):
+
+```bash
+# macOS / Linux / Git Bash
+./publish.sh https://github.com/<사용자명>/review-assistant.git
+```
+
+```powershell
+# Windows PowerShell
+.\publish.ps1 https://github.com/<사용자명>/review-assistant.git
+```
+
+원본 이력, `.venv`, `__pycache__`, `.env`를 빼고 새 저장소로 푸시합니다.
+`.env`가 섞이면 중단합니다.
+
 ## 하지 않는 것
 
 - 리뷰 자동 등록 (각 쇼핑몰 이용약관 위반이고, 캡차·봇 탐지로 실질적으로도 어렵습니다)
