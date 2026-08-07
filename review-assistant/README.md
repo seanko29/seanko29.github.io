@@ -127,13 +127,23 @@ python cli.py 사진.jpg -p naver -c food_product --note "배송 하루만에 �
 [콘솔 사용량](https://console.anthropic.com/settings/usage)에서 확인하세요.
 [한도 설정](https://console.anthropic.com/settings/limits)으로 상한을 걸어두길 권합니다.
 
-### 구독으로 쓰고 싶다면
+### 구독으로 쓰기 (API 비용 0원)
 
-이 도구 대신 claude.ai에 프로젝트를 하나 만들고 `docs/assets/api.js` 의
-`SYSTEM_PROMPT` 를 프로젝트 지침에 붙여넣은 뒤, 사진을 올리고
-"무신사용 리뷰 초안 만들어줘" 라고 하면 됩니다. 구독 사용량 안에서 처리되고
-추가 과금이 없습니다. 대신 플랫폼·카테고리 규칙을 매번 말로 지정해야 하고
-복사 버튼이나 자리표시자 강조 같은 편의 기능은 없습니다.
+Claude Pro/Max 구독이 있으면 API를 안 써도 됩니다.
+
+1. claude.ai → **프로젝트** 새로 만들기
+2. **프로젝트 지침**에 [`PROJECT_INSTRUCTIONS.md`](PROJECT_INSTRUCTIONS.md) 내용을 그대로 붙여넣기
+3. 사진 올리고 "무신사용으로 만들어줘. 키 176 평소 M." 이라고 입력
+
+구독 사용량 안에서 처리되고 추가 과금이 없습니다. 폰 앱에서도 됩니다.
+대신 복사 버튼, 자리표시자 강조, 프로필 자동 반영 같은 편의 기능은 없습니다.
+
+`PROJECT_INSTRUCTIONS.md` 는 `core/` 정의에서 자동 생성됩니다.
+카테고리나 플랫폼 규칙을 고쳤다면 다시 뽑으세요:
+
+```bash
+python tools/gen_project_instructions.py > PROJECT_INSTRUCTIONS.md
+```
 
 ## 구조
 
