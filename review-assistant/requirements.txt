@@ -1,0 +1,9 @@
+anthropic>=0.116.0
+fastapi>=0.115.0
+uvicorn[standard]>=0.30.0
+python-multipart>=0.0.9
+pydantic>=2.7.0
+Pillow>=10.3.0
+python-dotenv>=1.0.1
+# 아이폰 HEIC 사진을 그대로 올리려면 필요 (없어도 JPG/PNG는 동작)
+pillow-heif>=0.16.0

@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>리뷰 초안 생성기</title>
+<meta name="description" content="구매한 상품 사진 한 장으로 네이버·쿠팡·무신사 리뷰 초안 만들기">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><text y='13' font-size='13'>📝</text></svg>">
+<link rel="stylesheet" href="./assets/app.css">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>리뷰 초안 생성기</h1>
+    <p class="sub">
+      구매한 상품 사진을 올리면 플랫폼에 맞는 리뷰 초안을 만들어 줍니다.
+      사진으로 알 수 없는 것(맛·착용감·배송 등)은 <mark>[이렇게]</mark> 표시되니 직접 채워서 올리세요.
+    </p>
+  </header>
+
+  <div class="grid">
+    <!-- ============ 왼쪽: 입력 ============ -->
+    <div>
+      <!-- API 키 -->
+      <div class="card">
+        <div id="keyForm" hidden>
+          <div class="field">
+            <label for="apiKey">Anthropic API 키</label>
+            <input id="apiKey" type="password" placeholder="sk-ant-..." autocomplete="off" spellcheck="false">
+            <p class="note tight" id="keyErr" style="color:var(--danger)"></p>
+          </div>
+          <button class="ghost" id="saveKey">저장</button>
+          <p class="note">
+            키는 <b>이 브라우저에만</b> 저장되고(localStorage) 요청은 브라우저에서
+            api.anthropic.com 으로 직접 나갑니다. 중간 서버가 없습니다.
+            공용 PC에서는 쓰고 나서 아래 삭제 버튼을 눌러주세요.
+            <a href="https://console.anthropic.com/settings/keys" target="_blank" rel="noopener">키 발급받기</a>
+          </p>
+        </div>
+        <div id="keySet" class="key-state" hidden>
+          <span class="ok-dot">●</span>
+          <span>API 키 저장됨</span>
+          <code id="keyMasked"></code>
+          <button class="ghost danger" id="clearKey" style="margin-left:auto">삭제</button>
+        </div>
+      </div>
+
+      <!-- 사진 + 옵션 -->
+      <div class="card">
+        <div id="drop">
+          <div id="dropText">사진을 끌어다 놓거나 클릭해서 선택<br><small>JPG · PNG · WebP</small></div>
+          <img id="preview" hidden alt="업로드한 사진 미리보기">
+        </div>
+        <input type="file" id="file" accept="image/*" hidden>
+
+        <div class="field" style="margin-top:15px">
+          <label for="platform">어디에 올릴 리뷰인가요</label>
+          <select id="platform"></select>
+        </div>
+
+        <div class="field">
+          <label for="category">카테고리 <span class="plain">— 비워두면 사진 보고 자동 판별</span></label>
+          <select id="category"><option value="">자동 판별</option></select>
+        </div>
+
+        <div class="field">
+          <label for="note">직접 겪은 것 <span class="plain">(선택)</span></label>
+          <textarea id="note" placeholder="예) 생각보다 얇음. 배송 하루 만에 옴. 색은 사진보다 어두움."></textarea>
+          <p class="note">여기 적은 내용은 실제 경험으로 취급해 초안에 반영합니다.
+            맛·착용감처럼 사진에 안 나오는 건 여기 적으면 자리표시자 대신 문장이 됩니다.</p>
+        </div>
+
+        <button class="primary" id="go" disabled>초안 만들기</button>
+        <button class="ghost" id="cancel" hidden style="width:100%;margin-top:8px">취소</button>
+
+        <!-- 내 정보 -->
+        <details>
+          <summary>내 정보 (무신사 사이즈 리뷰 등에 사용)</summary>
+          <div class="dbody">
+            <div class="row">
+              <div class="field"><label for="height_cm">키 (cm)</label><input id="height_cm" inputmode="numeric"></div>
+              <div class="field"><label for="weight_kg">몸무게 (kg)</label><input id="weight_kg" inputmode="numeric"></div>
+            </div>
+            <div class="row">
+              <div class="field"><label for="top_size">평소 상의</label><input id="top_size" placeholder="M"></div>
+              <div class="field"><label for="bottom_size">평소 하의</label><input id="bottom_size" placeholder="30"></div>
+            </div>
+            <div class="row">
+              <div class="field"><label for="shoe_size">발 (mm)</label><input id="shoe_size" inputmode="numeric" placeholder="270"></div>
+              <div class="field"><label for="age_range">연령대</label><input id="age_range" placeholder="30대"></div>
+            </div>
+            <div class="field"><label for="skin_type">피부 타입</label><input id="skin_type" placeholder="복합성"></div>
+            <button class="ghost" id="saveProfile">저장</button><span class="note" id="profileMsg"></span>
+            <p class="note">이 브라우저에만 저장됩니다. 카테고리에 맞는 항목만 골라서 씁니다 —
+              화장품 리뷰에는 피부 타입만 들어가고 키·몸무게는 들어가지 않습니다.</p>
+          </div>
+        </details>
+
+        <!-- 설정 -->
+        <details>
+          <summary>설정</summary>
+          <div class="dbody">
+            <div class="field">
+              <label for="model">모델</label>
+              <select id="model">
+                <option value="claude-opus-5">Opus 5 — 가장 정확 · 회당 약 90원</option>
+                <option value="claude-sonnet-5">Sonnet 5 — 권장 · 회당 약 25원</option>
+                <option value="claude-haiku-4-5">Haiku 4.5 — 가장 저렴 · 회당 약 10원</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="effort">생각 깊이 <span class="plain">(Haiku는 해당 없음)</span></label>
+              <select id="effort">
+                <option value="low">낮음 — 가장 저렴하고 빠름</option>
+                <option value="medium">보통 — 기본</option>
+                <option value="high">높음 — 더 꼼꼼하지만 비쌈</option>
+              </select>
+              <p class="note">사고 토큰이 비용의 큰 부분입니다. 리뷰 초안 정도면
+                '낮음'이나 '보통'으로 충분합니다.</p>
+            </div>
+            <div class="field">
+              <label for="maxPx">사진 축소 크기 (긴 변 픽셀)</label>
+              <select id="maxPx">
+                <option value="1120">1120 — 가장 저렴</option>
+                <option value="1568">1568 — 기본</option>
+                <option value="2576">2576 — 최고 화질(비용 약 3배)</option>
+              </select>
+              <p class="note">사진은 브라우저에서 이 크기로 줄인 뒤 전송됩니다.
+                원단 질감처럼 세밀한 디테일이 중요할 때만 올리세요.</p>
+            </div>
+            <button class="ghost" id="saveSettings">저장</button><span class="note" id="settingsMsg"></span>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <!-- ============ 오른쪽: 결과 ============ -->
+    <div id="out">
+      <div class="card empty">왼쪽에 사진을 올리고 <b>초안 만들기</b>를 누르세요.</div>
+    </div>
+  </div>
+</div>
+<script type="module" src="./assets/app.js"></script>
+</body>
+</html>
